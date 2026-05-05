@@ -1,0 +1,15 @@
+from pydantic import Field
+from pydantic_settings import BaseSettings
+
+
+class Settings(BaseSettings):
+    database_url: str = Field(..., env="DATABASE_URL")
+    app_name: str = "Spotify-like API"
+    debug: bool = False
+
+    class Config:
+        env_file = ".env"
+        env_file_encoding = "utf-8"
+
+
+settings = Settings()
